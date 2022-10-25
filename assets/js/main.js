@@ -354,11 +354,13 @@ function getFetch(){
       .then(data => {
         console.log(data)
         if(data.media_type === "image"){
-			document.querySelector('iframe').src = null
-          	document.querySelector('img').src = data.hdurl
+          	document.querySelector('iframe').style.visibility = 'hidden'
+			document.querySelector('img').style.visibility = 'visible'
+			document.querySelector('img').src = data.url
         }else if (data.media_type === 'video'){
-          document.querySelector('img').src = null
-          document.querySelector('iframe').src = data.url
+           document.querySelector('img').style.visibility = 'hidden'
+		   document.querySelector('iframe').style.visibility = 'visible'
+           document.querySelector('iframe').src = data.url
         }
         document.querySelector('h3').innerText = data.explanation
       })
